@@ -252,6 +252,28 @@ button{font:inherit;border:0;background:none;color:inherit;cursor:pointer}
   width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.12);display:grid;place-items:center}
 .close svg{width:17px;height:17px;stroke:#fff;stroke-width:2.2;stroke-linecap:round}
 
+/* ============ PRINT / PDF ============ */
+@media print{
+  @page{size:297mm 210mm;margin:0}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;animation:none!important;transition:none!important}
+  html,body{height:auto;overflow:visible;background:#fff}
+  .nav,.bar,#toc,.open-hint{display:none!important}
+  #book{position:static;perspective:none;overflow:visible}
+  .pg{
+    position:relative;inset:auto;
+    width:297mm;height:209.4mm;
+    opacity:1!important;transform:none!important;pointer-events:auto;
+    page-break-after:always;break-after:page;page-break-inside:avoid;
+    overflow:hidden;display:block;
+  }
+  .pg:last-child{page-break-after:auto;break-after:auto}
+  .inner{position:absolute;inset:0;overflow:hidden;padding:13mm 15mm}
+  .mdl{position:absolute;inset:0}
+  .ctab{max-height:none;overflow:visible}
+  .ctab thead th{position:static}
+  .reveal{opacity:1!important;transform:none!important}
+}
+
 /* chrome adjustments for small / portrait screens — must come last */
 @media(max-width:900px),(orientation:portrait){
   .nav{display:none!important}
